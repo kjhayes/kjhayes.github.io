@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Extreme Wordle</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <div class="title-bar">
+            <span>Extreme Wordle</span>
+        </div>
+	<div id="alert-box" class="alert-box"></div>
+	<div id="instruction_box" class="instruction-box">
+		<div class="instruction-header">
+		<div class="instruction-close", onclick="toggle_instruction_box()">X</div>
+		</div>
+	    <div class="instruction-text">
+	        <h2>Welcome to Extreme Wordle!</h2>
+		
+		<p>Currently the default word set is entirely french and variable length words, and I haven't implemented a way to change it yet... I'll get to it later...</p>
+
+		<p>To play another game, just reload the page! (Another thing I need to actually provide a button for... (It's exam season so you can't blame me for being busy...))</p>
+
+		<p><span style="color:red;font-weight:bold;">Warning:</span> The Word Set is being pulled from a third-party which I have not fully vetted because it's a few thousand words long (e.g. there could be inappropriate words)</p>
+	    </div>
+	</div>
+        <div class="main-box">
+            <div id="words"></div>
+        </div>
+    </body>
+</html>
