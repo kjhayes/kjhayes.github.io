@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "kjhayes.github.io"
+base_url = "kjhayes.github.io/public"
 title = "Kevin Hayes"
 
 theme = "terminimal"
