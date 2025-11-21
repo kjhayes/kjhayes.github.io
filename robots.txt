@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: kjhayes.github.io/sitemap.xml
+Sitemap: https://kjhayes.github.io/sitemap.xml
