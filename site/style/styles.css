@@ -7,6 +7,7 @@
     --navyish:#153B48;
     --blackish:#151532;
     --purpleish:#C3ACFB;
+    --darkpurpleish:#352343;
 
     --secondary-text-bg-color:var(--orangeish);
     --secondary-text-shadow-color:var(--brownish);
@@ -74,11 +75,11 @@ body {
 }
 
 .article > div {
-    color: var(--navyish);
+    color: var(--darkpurpleish);
     background-color: var(--purpleish);
     box-shadow: var(--text-shadow-width)
                 var(--text-shadow-height)
-                var(--navyish);
+                var(--darkpurpleish);
 }
 
 .article > blockquote {

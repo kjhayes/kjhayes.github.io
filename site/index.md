@@ -26,9 +26,9 @@ those cute photos of your dog for myself and _never_ give them back.
 {% for pub in publications %}
 <div>
 <a href="{{ pub.url }}">
-<div style="display:flex;flex-direction:row;align-contents:flex-start">
+<div style="display:flex;flex-direction:row;align-contents:flex-start;column-gap:5px">
   <span>{{ pub.type }}</span>
-  <em>{{ pub.title }}</em>
+  <center><em>{{ pub.title }}</em></center>
 </div>
 <br>
 <center>
