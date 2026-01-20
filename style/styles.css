@@ -12,7 +12,7 @@
     --secondary-text-bg-color:var(--orangeish);
     --secondary-text-shadow-color:var(--brownish);
 
-    --text-width: 12pt;
+    --text-width: 14pt;
     --text-height: calc(var(--text-width)*1.2);
     --text-shadow-width: calc(var(--text-width)*1);
     --text-shadow-height: calc(var(--text-height)*1);
@@ -22,13 +22,16 @@
     white-space: nowrap;
 }
 
-a {text-decoration: none; }
+a {
+    text-decoration: none;
+}
 
 html {
-    font-family: "courier", monospace;
-    font-weight: bold;
+    font-family: "courier new", monospace;
+    font-weight: normal;
     font-size: var(--text-width);
     line-height: var(--text-height);
+
     background-color: var(--blackish);
 }
 
@@ -49,12 +52,14 @@ body {
 
 .article > h1, .article > h2, .article > h3 {
     color: var(--whiteish);
+    line-height: calc(var(--text-height)*2);
 }
 
 .article > p,
 .article > div,
-.article > blockquote {
-
+.article > a,
+.article > blockquote
+{
     margin-right:  calc(var(--text-shadow-width)*2);
     margin-left:   calc(var(--text-shadow-width)*0);
     margin-top:    calc(var(--text-shadow-height)*0);
@@ -66,7 +71,9 @@ body {
     padding-right: calc(var(--text-width));
 }
 
-.article > p {
+.article > p,
+.article > div
+{
     color: var(--navyish);
     background-color: var(--tealish);
     box-shadow: var(--text-shadow-width)
@@ -74,7 +81,7 @@ body {
                 var(--navyish);
 }
 
-.article > div {
+.article > a {
     color: var(--darkpurpleish);
     background-color: var(--purpleish);
     box-shadow: var(--text-shadow-width)
@@ -88,5 +95,23 @@ body {
     box-shadow: var(--text-shadow-width)
                 var(--text-shadow-height)
                 var(--brownish);
+}
+
+.type-and-title {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.nomargin {
+    margin-right:  0pt;
+    margin-left:   0pt;
+    margin-top:    0pt;
+    margin-bottom: 0pt;
+}
+.nopadding {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    padding-left: 0pt;
+    padding-right: 0pt;
 }
 
