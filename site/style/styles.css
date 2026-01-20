@@ -6,12 +6,8 @@
     --tealish:#429E9D;
     --navyish:#153B48;
     --blackish:#151532;
+    --purpleish:#C3ACFB;
 
-    --primary-text-color:var(--navyish);
-    --primary-text-bg-color:var(--tealish);
-    --primary-text-shadow-color:var(--navyish);
-
-    --secondary-text-color:var(--brownish);
     --secondary-text-bg-color:var(--orangeish);
     --secondary-text-shadow-color:var(--brownish);
 
@@ -20,6 +16,12 @@
     --text-shadow-width: calc(var(--text-width)*1);
     --text-shadow-height: calc(var(--text-height)*1);
 }
+
+.nowrap {
+    white-space: nowrap;
+}
+
+a {text-decoration: none; }
 
 html {
     font-family: "courier", monospace;
@@ -48,7 +50,9 @@ body {
     color: var(--whiteish);
 }
 
-.article > p, .article > blockquote {
+.article > p,
+.article > div,
+.article > blockquote {
 
     margin-right:  calc(var(--text-shadow-width)*2);
     margin-left:   calc(var(--text-shadow-width)*0);
@@ -62,14 +66,26 @@ body {
 }
 
 .article > p {
-    color: var(--primary-text-color);
-    background-color: var(--primary-text-bg-color);
-    box-shadow: var(--text-shadow-width) var(--text-shadow-height) var(--primary-text-shadow-color);
+    color: var(--navyish);
+    background-color: var(--tealish);
+    box-shadow: var(--text-shadow-width)
+                var(--text-shadow-height)
+                var(--navyish);
+}
+
+.article > div {
+    color: var(--navyish);
+    background-color: var(--purpleish);
+    box-shadow: var(--text-shadow-width)
+                var(--text-shadow-height)
+                var(--navyish);
 }
 
 .article > blockquote {
-    color: var(--secondary-text-color);
-    background-color: var(--secondary-text-bg-color);
-    box-shadow: var(--text-shadow-width) var(--text-shadow-height) var(--secondary-text-shadow-color);
+    color: var(--brownish);
+    background-color: var(--orangeish);
+    box-shadow: var(--text-shadow-width)
+                var(--text-shadow-height)
+                var(--brownish);
 }
 

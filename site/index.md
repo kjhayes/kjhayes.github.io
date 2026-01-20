@@ -23,5 +23,26 @@ those cute photos of your dog for myself and _never_ give them back.
 
 ## Publications
 
-This is where I would list some publications if I had any :(
-
+{% for pub in publications %}
+<div>
+<a href="{{ pub.url }}">
+<div style="display:flex;flex-direction:row;align-contents:flex-start">
+  <span>{{ pub.type }}</span>
+  <em>{{ pub.title }}</em>
+</div>
+<br>
+<center>
+<small>
+{% for author in pub.authors-%}
+{% if author == "Kevin Hayes"-%}
+<em class="nowrap">{{ author-}}</em>
+{% elsif true-%}
+<span class="nowrap">{{ author-}}</span>
+{% endif-%}
+&ensp;
+{% endfor %}
+</small>
+</center>
+</a>
+</div>
+{% endfor %}
