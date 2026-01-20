@@ -1,6 +1,16 @@
 
+const datefns = require("date-fns");
+
 module.exports = function(config) {
     config.addPassthroughCopy("site/style");
+
+    config.addGlobalData("site", {
+        url: "https://kjhayes.github.io"
+    });
+
+    config.addFilter('date', function (date, fmt) {
+        return datefns.format(date, fmt)
+    })
 
     config.addDataExtension("txt", {
         parser: (content, path) => {
