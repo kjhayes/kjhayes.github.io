@@ -1,0 +1,75 @@
+
+:root {
+    --whiteish:#EAE8F6;
+    --orangeish:#F36E48;
+    --brownish:#60404E;
+    --tealish:#429E9D;
+    --navyish:#153B48;
+    --blackish:#151532;
+
+    --primary-text-color:var(--navyish);
+    --primary-text-bg-color:var(--tealish);
+    --primary-text-shadow-color:var(--navyish);
+
+    --secondary-text-color:var(--brownish);
+    --secondary-text-bg-color:var(--orangeish);
+    --secondary-text-shadow-color:var(--brownish);
+
+    --text-width: 12pt;
+    --text-height: calc(var(--text-width)*1.2);
+    --text-shadow-width: calc(var(--text-width)*1);
+    --text-shadow-height: calc(var(--text-height)*1);
+}
+
+html {
+    font-family: "courier", monospace;
+    font-weight: bold;
+    font-size: var(--text-width);
+    line-height: var(--text-height);
+    background-color: var(--blackish);
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--blackish);
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    column-gap: var(--text-height);
+    justify-content: flex-start;
+    width: min(95vw,calc(var(--text-width)*40));
+}
+
+.article > h1, .article > h2, .article > h3 {
+    color: var(--whiteish);
+}
+
+.article > p, .article > blockquote {
+
+    margin-right:  calc(var(--text-shadow-width)*2);
+    margin-left:   calc(var(--text-shadow-width)*0);
+    margin-top:    calc(var(--text-shadow-height)*0);
+    margin-bottom: calc(var(--text-shadow-height)*2);
+
+    padding-top: calc(var(--text-height));
+    padding-bottom: calc(var(--text-height));
+    padding-left: calc(var(--text-width));
+    padding-right: calc(var(--text-width));
+}
+
+.article > p {
+    color: var(--primary-text-color);
+    background-color: var(--primary-text-bg-color);
+    box-shadow: var(--text-shadow-width) var(--text-shadow-height) var(--primary-text-shadow-color);
+}
+
+.article > blockquote {
+    color: var(--secondary-text-color);
+    background-color: var(--secondary-text-bg-color);
+    box-shadow: var(--text-shadow-width) var(--text-shadow-height) var(--secondary-text-shadow-color);
+}
+
