@@ -12,7 +12,9 @@
             "Peter Dinda"
         ],
         "type": "Tech Report",
-        "doi": "NU-CS-2025-36"
+        "doi": "NU-CS-2025-36",
+        "shortname": "beandip-tech-report",
+        "has_abstract": true
     }
 ]
 

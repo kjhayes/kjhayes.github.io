@@ -1,5 +1,5 @@
 ---
-layout: default.html
+layout: article.html
 ---
 
 # Kevin Hayes
@@ -23,26 +23,5 @@ those cute photos of your dog for myself and _never_ give them back.
 
 ## Publications
 
-{% for pub in publications %}
-<div>
-<a href="{{ pub.url }}">
-<div style="display:flex;flex-direction:row;align-contents:flex-start;column-gap:5px">
-  <span>{{ pub.type }}</span>
-  <center><em>{{ pub.title }}</em></center>
-</div>
-<br>
-<center>
-<small>
-{% for author in pub.authors-%}
-{% if author == "Kevin Hayes"-%}
-<em class="nowrap">{{ author-}}</em>
-{% elsif true-%}
-<span class="nowrap">{{ author-}}</span>
-{% endif-%}
-&ensp;
-{% endfor %}
-</small>
-</center>
-</a>
-</div>
-{% endfor %}
+{% include "publist.html" %}
+
