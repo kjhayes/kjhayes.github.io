@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>
+    {% if title %}
+      {{ title }}
+    {% elsif true %}
+      Kevin Hayes
+    {% endif %}
+  </title>
   <link rel="stylesheet" href="/style/styles.css">
 </head>
 <body>

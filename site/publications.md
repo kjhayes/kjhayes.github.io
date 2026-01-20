@@ -1,13 +1,18 @@
 ---
-layout: article.html
 pagination: 
   data: publications
   size: 1
   alias: pub
+
+layout: article.html
 permalink: "publication/{{ pub.shortname | slugify }}.html"
+eleventyComputed:
+  title: "{{ pub.title }}{% if pub.type %}- {{ pub.type }}{% endif %}"
 ---
 
+{% if pub.type %}
 ## {{ pub.type }}
+{% endif %}
 
 # *{{ pub.title }}*
 
