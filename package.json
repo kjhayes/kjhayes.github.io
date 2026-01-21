@@ -19,6 +19,7 @@
   "homepage": "https://github.com/kjhayes/kjhayes.github.io#readme",
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
+    "@vrugtehagel/eleventy-tex": "npm:@jsr/vrugtehagel__eleventy-tex@^0.1.2",
     "date-fns": "^4.1.0"
   }
 }

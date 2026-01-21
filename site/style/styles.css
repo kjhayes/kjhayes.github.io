@@ -16,6 +16,8 @@
     --text-height: calc(var(--text-width)*1.2);
     --text-shadow-width: calc(var(--text-width)*1);
     --text-shadow-height: calc(var(--text-height)*1);
+
+    --math-scale: 1.4;
 }
 
 .nowrap {
@@ -79,6 +81,20 @@ body {
     box-shadow: var(--text-shadow-width)
                 var(--text-shadow-height)
                 var(--navyish);
+}
+
+.katex {
+    font-size: calc(var(--text-width)*var(--math-scale));
+    line-height: calc(var(--text-height)*var(--math-scale));
+}
+
+.article > p:has(> ::first-line.katex:only-child)
+{
+    color: var(--brownish);
+    background-color: var(--orangeish);
+    box-shadow: var(--text-shadow-width)
+                var(--text-shadow-height)
+                var(--brownish);
 }
 
 .article > a {

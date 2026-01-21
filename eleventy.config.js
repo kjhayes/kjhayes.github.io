@@ -1,7 +1,13 @@
 
 const datefns = require("date-fns");
+const EleventyTeX = require("@vrugtehagel/eleventy-tex").default;
 
-module.exports = function(config) {
+module.exports = async function(config)
+{
+    config.addPlugin(EleventyTeX, {
+        extension: "tex",
+    });
+
     config.addPassthroughCopy("site/style");
 
     config.addGlobalData("site", {
