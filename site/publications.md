@@ -7,7 +7,7 @@ pagination:
 layout: article.html
 permalink: "publication/{{ pub.shortname | slugify }}.html"
 eleventyComputed:
-  title: "{{ pub.title }}{% if pub.type %}- {{ pub.type }}{% endif %}"
+  title: "{{ pub.title }}{% if pub.type %} - {{ pub.type }}{% endif %}"
 ---
 
 {% if pub.type %}
