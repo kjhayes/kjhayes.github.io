@@ -26,6 +26,20 @@
     --code-font: Consolas,Monaco,Lucida Console,monospace;
 }
 
+@media only screen and (max-width: 600px) {
+  :root {
+    --text-width: 24pt;
+  }
+  .requiredesktop  {
+      display: none;
+  }
+}
+@media (hover: none) {
+  .requirehover {
+    display: none;
+  }
+}
+
 /* I do not like links being underlined by default */
 a {
     text-decoration: none;
@@ -34,6 +48,7 @@ a {
 html {
     font-family: var(--base-font);
     font-weight: normal;
+
     font-size: var(--text-width);
     line-height: var(--text-height);
 
