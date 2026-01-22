@@ -188,14 +188,14 @@ p {
 .type-and-title {
     display: grid;
     width: auto;
-    grid-template-columns: 15% 1fr;
-    column-gap: 2%;
+    grid-template-columns: 20% 1fr;
+    column-gap: 5%;
 }
 .type-and-title-and-date {
     display: grid;
     width: auto;
-    grid-template-columns: 15% 1fr 15%;
-    column-gap: 2%;
+    grid-template-columns: 20% 1fr 20%;
+    column-gap: 5%;
 }
 .nomargin {
     margin-right:  0pt;
