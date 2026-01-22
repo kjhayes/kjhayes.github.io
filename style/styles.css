@@ -12,7 +12,7 @@
     --secondary-text-bg-color:var(--orangeish);
     --secondary-text-shadow-color:var(--brownish);
 
-    --text-width: 16pt;
+    --text-width: 14pt;
     --text-height: calc(var(--text-width)*1.2);
     --text-shadow-width: calc(var(--text-width)*1);
     --text-shadow-height: calc(var(--text-height)*1);
@@ -22,13 +22,14 @@
     --dark-color: var(--blackish);
     --light-color: var(--whiteish);
 
-    --base-font: Courier New,monospace;
+    --base-font: Courier,monospace;
     --code-font: Consolas,Monaco,Lucida Console,monospace;
 }
 
-@media only screen and (max-width: 600px) {
+/* Try to detect mobile */
+@media (pointer:none), (pointer:coarse) {
   :root {
-    --text-width: 32pt;
+    --text-width: 30pt;
   }
   .requiredesktop  {
       display: none;
@@ -47,7 +48,7 @@ a {
 
 html {
     font-family: var(--base-font);
-    font-weight: normal;
+    font-weight: bold;
 
     font-size: var(--text-width);
     line-height: var(--text-height);
