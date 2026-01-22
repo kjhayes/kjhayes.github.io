@@ -9,6 +9,7 @@ module.exports = async function(config)
     });
 
     config.addPassthroughCopy("site/style");
+    config.addPassthroughCopy("site/favicon.ico");
 
     config.addGlobalData("site", {
         url: "https://kjhayes.github.io"
