@@ -1,5 +1,0 @@
-Each CPU on a modern architecture can receive thousands of hardware interrupts/second due to
-networking, I/O, and other events. In operating systems like Linux, interrupts cause expensive, hardware-
-driven context switches to the kernel and unexpected disruptions to caches and other hardware state. In
-HPC and database applications, for example, this results in significant performance impacts and
-unnecessary nondeterminism. Is it time to reconsider the alternative to interrupts, namely polling?

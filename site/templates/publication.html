@@ -1,0 +1,30 @@
+---
+layout: article.html
+---
+
+{%-if type-%}
+<h2>{{ type }}</h2>
+{%-endif-%}
+
+<h1><em>{{ title }}</em></h1>
+
+{%-if authors-%}
+<center>
+{%-for author in authors-%}
+{%-if author == "Kevin Hayes"-%}
+<strong class="nowrap">{{ author | escape -}}</strong>
+{%-else -%}
+<span class="nowrap">{{ author | escape -}}</span>
+{%-endif-%}
+&emsp;&emsp;
+{%-endfor-%}
+</center>
+{%-endif-%}
+
+{%-if pdflink-%}
+<a href="{{ pdflink }}" class="articleright">
+PDF Available Online
+</a>
+{%-endif-%}
+
+{{ content }}

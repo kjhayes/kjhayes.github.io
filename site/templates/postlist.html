@@ -1,0 +1,27 @@
+<div class="articlewide">
+{%-if collections.post == undefined-%}
+<center>Something has gone wrong... There should be posts here...</center>
+{%-else-%}
+{%-for post in collections.post reversed limit:maxlength -%}
+{%-if post.data.title-%}
+<a href="{{ post.page.url }}" class="articlewide">
+{%-if post.data.type-%}
+<div class="type-and-title nomargin nopadding">
+<span><code>{{ post.data.type }}</code></span>
+<em class="centered">{{ post.data.title }}</em>
+</div>
+{%-elsif true-%}
+<div>
+<em class="articlecenter">{{ post.data.title }}</em>
+</div>
+{%-endif-%}
+</a>
+{%-endif-%}
+{%-endfor-%}
+{%-if maxlength >= 0-%}
+{%-if maxlength < collections.post.length-%}
+<a href="/posts" class="articlecenter">More Posts</a>
+{%-endif-%}
+{%-endif-%}
+{%-endif-%}
+</div>

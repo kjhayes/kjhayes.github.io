@@ -27,6 +27,10 @@ $$
 $$
 
 ## Publications
-
+{% assign maxlength = 3 %}
 {% include "publist.html" %}
+
+## Posts
+{% assign maxlength = 5 %}
+{% include "postlist.html" %}
 

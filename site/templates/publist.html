@@ -1,38 +1,40 @@
-
-{% for pub in publications %}
-{% if pub.title %}
-<a href="/publication/{{ pub.shortname | slugify }}">
-
-{% if pub.type %}
+<div class="articlewide">
+{%-if collections.publication==undefined-%}
+<center>Something has gone wrong... There should be publications here...</center>
+{%-else-%}
+{%-for pub in collections.publication reversed limit:maxlength -%}
+{%-if pub.data.title-%}
+<a href="{{ pub.page.url }}" class="articlewide">
+{%-if pub.data.type-%}
 <div class="type-and-title nomargin nopadding">
-  <div>
-  <span>{{ pub.type }}</span>
-  </div>
-  <center><em>{{ pub.title }}</em></center>
+<span><code>{{ pub.data.type }}</code></span>
+<em class="centered">{{ pub.data.title }}</em>
 </div>
-{% elsif true %}
-<div class="nomargin nopadding">
-<center><em>{{ pub.title }}</em></center>
+{%-else-%}
+<div>
+<em class="articlecenter">{{ pub.data.title }}</em>
 </div>
-{% endif %}
-
-{% if pub.authors %}
+{%-endif-%}
+{% if pub.data.authors %}
 <br>
-<center>
-<small>
-{% for author in pub.authors-%}
-{% if author == "Kevin Hayes"-%}
-<em class="nowrap">{{ author-}}</em>
-{% elsif true-%}
+<center><small>
+{%-for author in pub.data.authors-%}
+{%-if author == "Kevin Hayes"-%}
+<strong class="nowrap">{{ author-}}</strong>
+{%-elsif true-%}
 <span class="nowrap">{{ author-}}</span>
-{% endif-%}
-&ensp;
-{% endfor %}
-</small>
-</center>
-{% endif %}
-
+{%-endif-%}
+&emsp;&emsp;
+{%-endfor-%}
+</small></center>
+{%-endif-%}
 </a>
-{% endif %}
-{% endfor %}
-
+{%-endif-%}
+{%-endfor-%}
+{%-if maxlength >= 0-%}
+{%-if maxlength < collections.publication.length-%}
+<a href="/publications" class="articlecenter">More Publications</a>
+{%-endif-%}
+{%-endif-%}
+{%-endif-%}
+</div>

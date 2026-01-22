@@ -17,6 +17,18 @@ module.exports = async function(config)
     config.addFilter('date', function (date, fmt) {
         return datefns.format(date, fmt)
     })
+    config.addFilter('pretty-date', function (date) {
+        return datefns.format(date, "yyyy/MM/dd")
+    })
+    config.addFilter("limit", function (arr, limit) {
+        console.log(`limit called with: arr=${arr} and limit=${limit}`)
+        if(limit >= 0){
+            return arr.slice(0,limit);
+        } else {
+            return arr;
+        }
+    });
+
 
     config.addDataExtension("txt", {
         parser: (content, path) => {
