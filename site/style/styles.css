@@ -22,13 +22,13 @@
     --dark-color: var(--blackish);
     --light-color: var(--whiteish);
 
-    --base-font: Courier New,Courier,monospace;
+    --base-font: Courier New,monospace;
     --code-font: Consolas,Monaco,Lucida Console,monospace;
 }
 
 @media only screen and (max-width: 600px) {
   :root {
-    --text-width: 24pt;
+    --text-width: 32pt;
   }
   .requiredesktop  {
       display: none;
