@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    
+      Using C Macros
+    
+  </title>
+  <link rel="stylesheet" href="/style/styles.css">
+  <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+<article>
+  <h1>Using C Macros</h1>
+<section class="articleright">2026/01/23</section>
+<p>I <em>love</em> <code>C</code>.</p>
+<p>It is by far the language I'm most
+comfortable programming in. I don't
+mean to imply that it is always the
+language which makes me the most <em>efficient</em>.
+(C++ or Python are far better at saving
+me time, especially when writing
+userspace programs). But nonetheless
+C is my favorite, often <em>because</em> of how
+little it does.</p>
+<p>Once you have a solid &quot;theory of
+operation&quot; there are really only
+so many ways a C program can go <em>wrong</em>.</p>
+<blockquote>
+<p>In all fairness, when it does go wrong it's
+<u>catastrophic</u>.</p>
+</blockquote>
+<p>But as a programmer very little is hidden
+from you. C tends not to do anything you
+don't explicitly <em>ask</em> it to.</p>
+<blockquote>
+<p>This is why I find design
+choices like passing around
+<code>std.Allocator</code>(s) in Zig so cool.
+Its just a bit too unstable for me
+to really get into it yet.</p>
+</blockquote>
+<p>Consider that when I declare a variable in C++,</p>
+<pre><code>int main(void) {
+  MyClass x;
+}
+</code></pre>
+<p>Literally <em>anything</em> could happen.</p>
+<p>The constructor could be allocating from the
+heap. It could be opening a TCP connection.
+It could be launching a dozen worker threads.
+Hell, it could be launching the JVM and
+TAS-ing <em>Minecraft</em> for all we know just from this
+one line of code.</p>
+<p>But when I write the following bit of C</p>
+<pre><code>int main(void) {
+  MyStruct x;
+}
+</code></pre>
+<p>I'd be willing to bet my life (and probably
+some of my friends lives) that I can guess
+exactly what code the compiler will generate.</p>
+<blockquote>
+<p><span class="dbend">☡</span> On x86 it'll almost certainly
+just be one instruction
+(or <em>zero</em> if optimizing)
+<code>subq $sizeof(MyStruct), %rsp</code>
+This just allocates some space on the stack,
+not even bothering to initialize it.</p>
+</blockquote>
+<p>This obviously isn't true for every example of C code;
+<a href="https://www.ioccc.org/2020/carlini/">an innocent enough looking <code>printf</code> may actually be playing Tic-Tac-Toe</a>.
+But things like that are <em>intentionally</em> abusing
+the features (and bugs) of the language.
+For the most part, C embodies the ideal of
+&quot;what you see is what you get&quot;.</p>
+<p>Ironically, that is until you get to my <em>other</em>
+favorite part of the C language: <em>Macros</em>.</p>
+<p>Strictly speaking C macros are not a part of C
+itself. They are applied by the &quot;C preprocessor&quot;
+<code>cpp</code> which can actually be run on any text file
+you'd like.</p>
+<p>If you're unfamiliar with how the C preprocessor
+works, its helpful to think of it as nothing more
+than glorified &quot;copy and paste&quot;.
+If it receives something like</p>
+<pre><code>#define MY_MACRO wahooo
+
+MY_MACRO, MY_MACRO, MY_MACRO
+</code></pre>
+<p>as input, then it will output</p>
+<pre><code>wahooo, wahooo, wahooo
+</code></pre>
+<p>It <em>looks</em> like macros are a feature of C itself
+because when you run the compiler, it actually
+invokes <code>cpp</code> on every input file it receives,
+before actually doing the work of parsing and compiling.</p>
+<p>This is great in the sense that Macros can be used
+to manipulate/generate the source code itself. But
+it is bad in the sense that it is even less clear what</p>
+<pre><code>int main(void) {
+    /* the starting lines of main */
+
+    MY_MACRO
+    
+    /* the ending lines of main */
+}
+</code></pre>
+<p>could be doing than it was what <code>MyClass x;</code> could have
+been doing in C++. Consider what would happen if it were
+defined as:</p>
+<pre><code>#define MY_MACRO return 0; } int some_entirely_new_function(void) {
+</code></pre>
+<p>then after it has been preprocessed it will look something like</p>
+<pre><code>int main(void) {
+    /* the starting lines of main */
+    return 0;
+}
+int some_entirely_new_function(void) {
+    /* (what were supposed to be) the ending lines of main */
+}
+</code></pre>
+<p>This is quite obviously terrible if you have any expectation
+that <em>reading</em> the code should give you an idea what the code
+might be doing. And as such its pretty common advice that
+macros should be used carefully and sparingly.</p>
+<blockquote>
+<p>I'm not very good at adhering to this advice.</p>
+</blockquote>
+<p>My first impression of macros was &quot;cool I guess&quot;.
+But that was back when I thought their only real use
+case was to define compiler time constants. That all
+changed when I was introduced to what I think the
+<em>real</em> reason C-macros are so cool: X Macros.</p>
+<h2>X Macros</h2>
+<p>A pretty common scenario I find myself in while writing
+C is defining an <code>enum</code> such as</p>
+<pre><code>typedef enum {
+
+    MY_STATE_A,
+    MY_STATE_B,
+    MY_STATE_C,
+
+} my_state_t;
+</code></pre>
+<p>and then having to define a boilerplate function
+along the lines of</p>
+<pre><code>const char *
+my_state_to_string(my_state_t state) {
+    switch(state) {
+        case MY_STATE_A: return &quot;MY_STATE_A&quot;;
+        case MY_STATE_B: return &quot;MY_STATE_B&quot;;
+        case MY_STATE_C: return &quot;MY_STATE_C&quot;;
+        default: return &quot;MY_STATE_INVALID&quot;;
+    }
+}
+</code></pre>
+<p>just to be able to print out a discernable error/debug
+message related to <code>my_state_t</code>.</p>
+<p>If later on we add a new state <code>MY_STATE_D</code> to <code>my_state_t</code>,
+then we also need to go back and add</p>
+<pre><code>case MY_STATE_D: return &quot;MY_STATE_D&quot;;
+</code></pre>
+<p>or else all of our debug messages will print out
+<code>MY_STATE_INVALID</code> when the state is in-fact quite
+<code>VALID</code>.</p>
+<blockquote>
+<p>Trying to fix a bug with <em>incorrect</em> error messages
+is a nightmare I wouldn't wish on my worst enemy.</p>
+</blockquote>
+<p>Wouldn't it be <em>nice</em> if we could just update our code
+in <em>one</em> place instead of two (or three, or four, or 5 dozen)
+places? After all, each <code>case THING: &quot;THING&quot;</code> statement is
+pretty much the definition of &quot;boilerplate&quot;.</p>
+<p>So consider if we replace the <code>enum</code> with:</p>
+<pre><code>#define MY_STATE_XLIST(X) \
+X(A)\
+X(B)\
+X(C)
+
+typedef enum
+{
+#define DECLARE_MY_STATE_ENUM(NAME) \
+  MY_STATE_ ## NAME
+  
+  MY_STATE_XLIST(DECLARE_MY_STATE_ENUM)
+
+#undef DECLARE_MY_STATE_ENUM
+
+} my_state_t;
+</code></pre>
+
+<section class="articleright">-<em>Kevin</em></section>
+
+</article>
+
+</body>
+</html>
