@@ -1,0 +1,248 @@
+
+:root {
+    --whiteish:#EAE8F6;
+    --orangeish:#F36848;
+    --brownish:#583434;
+    --tealish:#429E9D;
+    --navyish:#153B48;
+    --blackish:#151532;
+    --purpleish:#C3ACFB;
+    --darkpurpleish:#352343;
+
+    --secondary-text-bg-color:var(--orangeish);
+    --secondary-text-shadow-color:var(--brownish);
+
+    --text-width: 14pt;
+    --text-height: calc(var(--text-width)*1.2);
+    --text-shadow-width: calc(var(--text-width)*1);
+    --text-shadow-height: calc(var(--text-height)*1);
+
+    --math-scale: 1.5;
+
+    --dark-color: var(--blackish);
+    --light-color: var(--whiteish);
+
+    --base-font: Courier,monospace;
+    --code-font: Consolas,Monaco,Lucida Console,monospace;
+}
+
+/* Try to detect mobile */
+@media (pointer:none), (pointer:coarse) {
+  :root {
+    --text-width: 30pt;
+  }
+  .requiredesktop  {
+      display: none;
+  }
+}
+@media (hover: none) {
+  .requirehover {
+    display: none;
+  }
+}
+
+/* I do not like links being underlined by default */
+a {
+    text-decoration: none;
+}
+
+html {
+    font-family: var(--base-font);
+    font-weight: bold;
+
+    font-size: var(--text-width);
+    line-height: var(--text-height);
+
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+:is(article, article div) {
+    display: flex;
+    flex-direction: column;
+/*  row-gap: var(--text-height);
+    column-gap: var(--text-width); */
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+article {
+    margin-top: 2vh;
+    margin-bottom: 25vh;
+    width: min(95vw,calc(var(--text-width)*40));
+}
+div {
+    width: auto;
+}
+
+article > :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--whiteish);
+    line-height: calc(var(--text-height)*1.5);
+    margin-left:   0;
+    margin-top:    0;
+}
+
+/* 
+ * If we are not creating a "block" paragraph, do not add any
+ * margins to a paragraph
+ */
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Define the Shape of Article Blocks */
+:is(article, article div) > :is(p, center, section, a, blockquote, code)
+{
+    display: block;
+
+    margin-right:  calc(var(--text-shadow-width)*2);
+    margin-left:   calc(var(--text-shadow-width)*0);
+    margin-top:    calc(var(--text-shadow-height)*0);
+    margin-bottom: calc(var(--text-shadow-height)*2);
+
+    padding-top: calc(var(--text-height));
+    padding-bottom: calc(var(--text-height));
+    padding-left: calc(var(--text-width));
+    padding-right: calc(var(--text-width));
+
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    box-shadow: var(--text-shadow-width)
+                var(--text-shadow-height)
+                var(--dark-color);
+}
+
+/* 
+ * Paragraphs and Quotes stretch to full
+ * links and generic sections can be smaller
+ */
+:is(article, article div) > :is(p, center, blockquote, code)
+{
+    align-self: stretch;
+}
+:is(article, article div) > :is(a, section)
+{
+    align-self: flex-start;
+}
+.articlewide {
+    align-self: stretch;
+}
+.articlecenter {
+    align-self: center;
+}
+.articleleft {
+    align-self: flex-start;
+}
+.articleright {
+    align-self: flex-end;
+}
+
+/*
+ * Paragraphs and "sections" have the same color (non-interactive)
+ */
+:is(article, article div) > :is(p, center, section)
+{
+    --light-color: var(--tealish);
+    --dark-color: var(--navyish);
+}
+
+/*
+ * Links should be a different standout color
+ * (I associate purple with links anyways)
+ */
+:is(article, article div) > a {
+    --light-color: var(--purpleish);
+    --dark-color: var(--darkpurpleish);
+}
+
+/*
+ * Highlighting/Quotes/Footnotes/Asides
+ *
+ * When I'm writing I tend to insert lots
+ * of parentheticals (because rambling is *fun*)
+ * and this will hopefully give that urge a
+ * better outlet.
+ */
+:is(article, article div) > blockquote {
+    --light-color: var(--orangeish);
+    --dark-color: var(--brownish);
+}
+
+/*
+ * Code Blocks
+ */
+:is(article, article div) > code {
+    --light-color: var(--orangeish);
+    --dark-color: var(--brownish);
+}
+
+/* Some helper classes */
+.type-and-title {
+    display: grid;
+    width: auto;
+    grid-template-columns: 20% 1fr;
+    column-gap: 5%;
+}
+.type-and-title-and-date {
+    display: grid;
+    width: auto;
+    grid-template-columns: 20% 1fr 20%;
+    column-gap: 5%;
+}
+.nomargin {
+    margin-right:  0pt;
+    margin-left:   0pt;
+    margin-top:    0pt;
+    margin-bottom: 0pt;
+}
+.nopadding {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    padding-left: 0pt;
+    padding-right: 0pt;
+}
+.nowrap {
+    white-space: nowrap;
+}
+.centered {
+    text-align: center;
+}
+
+/* Dealing with Code Rendering */
+code {
+    font-family: var(--code-font);
+    font-weight: bold;
+}
+
+/* Inline Code */
+:not(:is(article, article div)) > code {
+    display: inline-block;
+    text-align: center;
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    padding-top: calc(var(--text-height)*0.1);
+    padding-bottom: calc(var(--text-height)*0.1);
+    padding-left: calc(var(--text-width)*0.25);
+    padding-right: calc(var(--text-width)*0.25);
+}
+
+/* Dealing with Math Rendering */
+.katex {
+    font-size: calc(var(--text-width)*var(--math-scale));
+    line-height: calc(var(--text-height)*var(--math-scale));
+}
+
+:is(article, article div) > p:has(> ::first-line.katex:only-child)
+{
+    --light-color: var(--orangeish);
+    --dark-color: var(--brownish);
+}
+
