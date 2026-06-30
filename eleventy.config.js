@@ -14,6 +14,7 @@ module.exports = async function(config)
     config.addGlobalData("site", {
         url: "https://kjhayes.github.io"
     });
+    config.addGlobalData("bend", `<span class="dbend">&#x2621;</span>`);
 
     config.addFilter('date', function (date, fmt) {
         return datefns.format(date, fmt)
