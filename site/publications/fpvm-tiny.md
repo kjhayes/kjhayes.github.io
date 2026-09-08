@@ -8,7 +8,25 @@ authors:
  - Peter Dinda
 type: Paper
 date: 2026-07
+doi: "10.1145/3806645.3807578"
+pdflink: "https://doi.org/10.1145/3806645.3807578"
 ---
 
-## Note
-Accepted at HPDC 26' (Slated for July 2026)
+## Abstract
+Floating point virtualization allows existing, unmodified application
+binaries to be run using an alternative arithmetic system. Such
+virtualization is geared to alternative numbers that are “larger”
+(require more bits) than the IEEE 754 numbers (e.g., 64 bit doubles)
+they replace. In this work, we approach the challenge of virtualizing
+with “smaller” numbers (requiring fewer bits), which is of increasing
+interest given the explosion of low-precision hardware targeting AI.
+We focus specifically on the ubiquitous x64 architecture through a
+hardware/software co-design that leverages x64 functionality that
+currently lays fallow. The design combines (a) instruction traps
+via lazy FPU abduction, and (b) simplified memory management
+by tiny value boxing. We also develop an example tiny alternative
+arithmetic system that allows smaller IEEE 754 numbers, down to 3
+bits, with the exact precision able to be specified on a per-value or
+per-instruction basis at runtime. Our prototype system is evaluated
+using validation and performance tests based on running NAS and
+other benchmarks with a range of lower precision numbers.
