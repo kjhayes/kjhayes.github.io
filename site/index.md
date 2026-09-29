@@ -4,9 +4,9 @@ layout: article.html
 
 # Kevin Hayes
 
-I am an incoming Ph.D. student at Northwestern University with a focus on
-operating systems.
-I work on my own [hobby operating system](https://github.com/kjhayes/kanawha)
+I am a first year Ph.D. student at Northwestern University with a focus on
+operating systems and floating point precision/correctness.
+I work on a [hobby operating system](https://github.com/kjhayes/kanawha)
 in my freetime and am interested in just about anything related to computer
 systems (OS, compilers, architecture, etc.)
 Throughout my undergraduate and master's degree(s) I worked with
@@ -27,4 +27,12 @@ $$
 ## Posts
 {% assign maxlength = 5 %}
 {% include "postlist.html" %}
+
+## Contact
+
+Feel free to reach out to me through any of the means below,
+though email is usually the best bet (checking LinkedIn hurts
+my soul).
+
+{% include "contactlist.html" %}
 
