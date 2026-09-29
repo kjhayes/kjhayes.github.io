@@ -201,6 +201,21 @@ p {
     --shadow-color: var(--darknavyish);
 }
 
+/*
+ * Contact Block
+ */
+.contacts { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: start;
+    justify-content: space-around;
+}
+.contacts > a {
+    align-self: center;
+}
+
 /* Some helper classes */
 .type-and-title {
     display: grid;

@@ -34,5 +34,8 @@ Feel free to reach out to me through any of the means below,
 though email is usually the best bet (checking LinkedIn hurts
 my soul).
 
-{% include "contactlist.html" %}
-
+<div class="contacts articlewide">
+<a href="mailto:kjhayes@u.northwestern.edu">kjhayes@u.northwestern.edu</a>
+<a href="https://www.github.com/kjhayes">Github</a>
+<a href="https://www.linkedin.com/in/kevin-hayes-b88842261">LinkedIn</a>
+</div>
