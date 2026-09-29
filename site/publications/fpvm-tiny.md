@@ -4,8 +4,8 @@ tags: publication
 
 title: "Enabling Floating Point Virtualization With Tiny Numbers"
 authors:
- - Kevin Hayes
- - Peter Dinda
+ - "Kevin Hayes"
+ - "Peter Dinda"
 type: Paper
 date: 2026-07
 doi: "10.1145/3806645.3807578"

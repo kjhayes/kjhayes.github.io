@@ -146,6 +146,19 @@ p {
 }
 
 /*
+ * Options for highlighting where my name is in an author list
+ * (Currently not highlighting more than an italics)
+ */
+.myauthor {
+    font-style: oblique;
+    font-weight: bold;
+}
+.otherauthor {
+    font-style: normal;
+    font-weight: bold;
+}
+
+/*
  * Paragraphs and "sections" have the same color (non-interactive)
  */
 :is(article, article div) > :is(p, center, section)

@@ -4,12 +4,12 @@ tags: publication
 
 title: "Eliminating Hardware Interrupts with Dispersed Interrupt Polling"
 authors:
- - Kirill Nagaitsev
- - Kevin McAfee
- - Kevin Hayes
- - Justin Dong
- - Nadharm Dhiantravan
- - Peter Dinda
+ - "Kirill Nagaitsev"
+ - "Kevin McAfee"
+ - "Kevin Hayes"
+ - "Justin Dong"
+ - "Nadharm Dhiantravan"
+ - "Peter Dinda"
 type: Tech Report
 date: 2025-09
 doi: "NU-CS-2025-36"

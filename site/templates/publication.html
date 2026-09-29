@@ -12,9 +12,9 @@ layout: article.html
 <center>
 {%-for author in authors-%}
 {%-if author == "Kevin Hayes"-%}
-<strong class="nowrap">{{ author | escape -}}</strong>
+<span class="nowrap myauthor">{{ author | escape -}}</span>
 {%-else -%}
-<span class="nowrap">{{ author | escape -}}</span>
+<span class="nowrap otherauthor">{{ author | escape -}}</span>
 {%-endif-%}
 &emsp;&emsp;
 {%-endfor-%}

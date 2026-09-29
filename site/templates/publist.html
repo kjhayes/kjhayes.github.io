@@ -20,9 +20,9 @@
 <center><small>
 {%-for author in pub.data.authors-%}
 {%-if author == "Kevin Hayes"-%}
-<strong class="nowrap">{{ author-}}</strong>
+<span class="nowrap myauthor">{{ author-}}</span>
 {%-elsif true-%}
-<span class="nowrap">{{ author-}}</span>
+<span class="nowrap otherauthor">{{ author-}}</span>
 {%-endif-%}
 &emsp;&emsp;
 {%-endfor-%}
